@@ -1,4 +1,5 @@
 ---
+- hosts: all
 - name: Create Admin User
   user:
     name=admin
