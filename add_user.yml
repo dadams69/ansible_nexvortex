@@ -2,7 +2,7 @@
 - hosts: all
 - name: Create Admin User
   user:
-    name=admin
+    name={% verbatim %}{{ admin_name }}{% endverbatim %}
     password={% verbatim %}{{ admin_password }}{% endverbatim %}
     groups=sudo
     append=yes
@@ -10,20 +10,7 @@
 
 - name: Add Admin Authorized Key
   authorized_key:
-    user=admin
+    user={% verbatim %}{{ admin_name }}{% endverbatim %}
     key="{% verbatim %}{{ common_public_key }}{% endverbatim %}"
     state=present
 
-- name: Create Deploy User
-  user:
-    name=deploy
-    password={% verbatim %}{{ deploy_password }}{% endverbatim %}
-    groups=www-data
-    append=yes
-    shell=/bin/bash
-
-- name: Add Deployer Authorized Key
-  authorized_key:
-    user=deploy
-    key="{% verbatim %}{{ common_public_key2 }}{% endverbatim %}"
-    state=present
