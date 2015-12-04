@@ -25,5 +25,5 @@
 - name: Add Deployer Authorized Key
   authorized_key:
     user=deploy
-    key="{% verbatim %}{{ common_public_key }}{% endverbatim %}"
+    key="{% verbatim %}{{ common_public_key2 }}{% endverbatim %}"
     state=present
