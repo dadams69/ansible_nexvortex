@@ -2,15 +2,15 @@
 - hosts: all
 - name: Create Admin User
   user:
-    name={% verbatim %}{{ admin_name }}{% endverbatim %}
-    password={% verbatim %}{{ admin_password }}{% endverbatim %}
+    name={{ admin_name }}
+    password={{ admin_password }}
     groups=sudo
     append=yes
     shell=/bin/bash
 
 - name: Add Admin Authorized Key
   authorized_key:
-    user={% verbatim %}{{ admin_name }}{% endverbatim %}
-    key="{% verbatim %}{{ common_public_key }}{% endverbatim %}"
+    user={{ admin_name }}
+    key="{{ common_public_key }}"
     state=present
 
